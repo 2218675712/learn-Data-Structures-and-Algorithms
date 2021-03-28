@@ -107,12 +107,19 @@ class MinHeap {
 
 }
 
-const h = new MinHeap()
-h.insert(3)
-h.insert(2)
-h.insert(6)
-h.pop()
-h.insert(4)
-console.log(h.peek())
-console.log(h.size())
-console.log(h.heap)
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findKthLargest = function (nums, k) {
+    const h = new MinHeap()
+    nums.forEach(n => {
+        h.insert(n)
+        if (h.size() > k) {
+            h.pop()
+        }
+    })
+    return h.peek()
+};
+findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4);
